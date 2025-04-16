@@ -1,9 +1,8 @@
 import { Form, Button } from 'react-bootstrap';
 import { UserInput } from '../stage1/validate';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface UserFormProps {
-  formData: UserInput;
+  formData: Omit<UserInput, 'age'> & { age: string | number };
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent) => void;
 }
@@ -23,7 +22,7 @@ const UserForm: React.FC<UserFormProps> = ({ formData, onChange, onSubmit }) => 
     <Form.Group className="mb-3">
       <Form.Label>年龄</Form.Label>
       <Form.Control
-        type="number"
+        type="text"
         name="age"
         value={formData.age}
         onChange={onChange}
@@ -43,7 +42,7 @@ const UserForm: React.FC<UserFormProps> = ({ formData, onChange, onSubmit }) => 
     </Form.Group>
 
     <Button variant="primary" type="submit">
-      提交
+      Submit
     </Button>
   </Form>
 );

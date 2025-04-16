@@ -1,23 +1,26 @@
-import { ListGroup } from 'react-bootstrap';
+import { ListGroup, Button } from 'react-bootstrap';
 import { User } from '../stage1/filter';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 interface UserListProps {
   users: User[];
+  onDelete: (id: number) => void;
 }
 
-const UserList: React.FC<UserListProps> = ({ users }) => (
-  <div className="mt-4">
-    <h5>用户列表</h5>
+const UserList: React.FC<UserListProps> = ({ users, onDelete }) => {
+  return (
     <ListGroup>
       {users.map((user) => (
-        <ListGroup.Item key={user.id}>
-          {user.name} ({user.age}) - {user.email}
+        <ListGroup.Item key={user.id} className="d-flex justify-content-between align-items-center">
+          <div>
+            <strong>{user.name}</strong> ({user.age}岁) - {user.email}
+          </div>
+          <Button variant="outline-danger" size="sm" onClick={() => onDelete(user.id)}>
+            删除
+          </Button>
         </ListGroup.Item>
       ))}
     </ListGroup>
-  </div>
-);
+  );
+};
 
 export default UserList;
