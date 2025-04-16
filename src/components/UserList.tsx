@@ -1,5 +1,5 @@
 import { ListGroup, Button } from 'react-bootstrap';
-import { User } from '../stage1/filter';
+import { User } from '../core/filterUsers';
 
 interface UserListProps {
   users: User[];

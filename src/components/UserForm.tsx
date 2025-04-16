@@ -1,5 +1,5 @@
 import { Form, Button } from 'react-bootstrap';
-import { UserInput } from '../stage1/validate';
+import { UserInput } from '../core/validate';
 
 interface UserFormProps {
   formData: Omit<UserInput, 'age'> & { age: string | number };
